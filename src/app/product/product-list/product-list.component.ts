@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BookserviceService } from 'src/app/services/Books/books.service';
 import { productsDB } from '../../shared/data/products';
 
 @Component({
@@ -10,12 +11,22 @@ export class ProductListComponent implements OnInit {
   isLoaded: boolean;
   advanceSearchExpanded: boolean = false;
   products = [];
-  constructor() {}
+  bookData = {};
+  
+  constructor(private bookService: BookserviceService) {}
 
   ngOnInit(): void {
     setTimeout(() => {
       this.products = productsDB.Product;
       this.isLoaded = true
-    }, 8000)
+    }, 1000)
+    this.getAllBooks();
+  }
+
+  getAllBooks(){
+    this.bookService.getBooks().subscribe((data: any)=> {
+      this.bookData = data;
+      console.log(this.bookData);
+    })
   }
 }
