@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BookserviceService } from 'src/app/services/Books/books.service';
+import { BookDetails } from 'src/app/shared/data/BookDetails';
 import { productsDB } from '../../shared/data/products';
 
 @Component({
@@ -11,7 +12,7 @@ export class ProductListComponent implements OnInit {
   isLoaded: boolean;
   advanceSearchExpanded: boolean = false;
   products = [];
-  bookData = {};
+  bookData:BookDetails[] = [];
   
   constructor(private bookService: BookserviceService) {}
 

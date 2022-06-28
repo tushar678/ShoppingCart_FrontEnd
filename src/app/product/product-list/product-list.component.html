@@ -68,21 +68,36 @@
 <div class="ll-products-area mb-24">
   <div class="container">
     <div class="grid grid-cols-12 gap-6 xxl:gap-8" *ngIf="isLoaded">
-      <div *ngFor="let product of products" class="col-span-12 md:col-span-6 xl:col-span-4">
+      <div *ngFor="let product of bookData" class="col-span-12 md:col-span-6 xl:col-span-3">
         <mat-card class="ll-product">
-          <img mat-card-image [src]="product?.images[0]" alt="{{ product.name }}" style="width: 100%; margin: 0 0 20px" />
+          <img mat-card-image [src]="product?.image" alt="{{ product.name }}" style="width: 100%; height: 200px; margin: 0 0 20px" />
           <mat-card-content class="flex">
-            <div class="flex-none w-10">
-              <img src="{{ product?.created_by?.avatar }}" alt="product?.created_by?.name" />
-            </div>
+            <!-- <div class="flex-none w-10">
+              <img src="{{ product?.image }}" alt="{{product?.Title}}" />
+            </div> -->
             <div class="flex-grow pl-3">
-              <h4 class="ll-product__creator">{{ product?.created_by?.name }}</h4>
+              <!-- <h4 class="ll-product__creator">{{ product?.Title }}</h4>
               <h2 class="ll-product__name">
-                <a [routerLink]="['/products', product.id]">{{ product.name }}</a>
-              </h2>
+                <a [routerLink]="['/products', product.id]">{{ product.Title}}</a>
+              </h2> -->
               <div class="flex justify-between mt-5">
-                <div class="ll-product__price-label">Prices:</div>
-                <div class="ll-product__price text-accent font-bold">€{{ product.price }}</div>
+                <!-- <div class="ll-product__price-label">Prices:</div> -->
+                <div class="ll-product__name"> {{ product.title }}</div>
+              </div>
+              <div class="flex justify-between mt-5">
+                <!-- <div class="ll-product__price-label">Prices:</div> -->
+                <div class="ll-product__creator text-accent font-bold"> {{ product.productType}}</div>
+              </div>
+              <div class="flex justify-between mt-2">
+                <div class="ll-product__price-label">List Price:</div>
+                <div class="ll-product__creator text-accent font-bold">
+                  <del>${{ product.listPrice }}</del>
+                  </div>
+              </div>
+
+              <div class="flex mt-2">
+                
+                <div class="ll-product__price  text-accent font-bold">${{ product.ourPrice }}</div>
               </div>
             </div>
           </mat-card-content>

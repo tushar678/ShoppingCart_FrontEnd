@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BookDetails } from 'src/app/shared/data/BookDetails';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -12,6 +13,6 @@ export class BookserviceService {
   baseUrl = environment.baseUrl;
 
   getBooks(){
-    return this.http.get(this.baseUrl + 'Books');
+    return this.http.get<BookDetails[]>(this.baseUrl + 'Books');
   }
 }

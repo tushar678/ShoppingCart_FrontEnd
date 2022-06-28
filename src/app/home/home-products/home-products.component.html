@@ -13,7 +13,7 @@
               <img src="{{ product?.created_by?.avatar }}" alt="product?.created_by?.name" />
             </div>
             <div class="flex-grow pl-3">
-              <h4 class="ll-product__creator">{{ product?.created_by?.name }}</h4>
+              <h4 class="ll-product__price-label">{{ product?.created_by?.name }}</h4>
               <h2 class="ll-product__name">
                 <a [routerLink]="['/products', product.id]">{{ product.name }}</a>
               </h2>
