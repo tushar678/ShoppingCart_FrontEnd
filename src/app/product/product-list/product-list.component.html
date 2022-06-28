@@ -65,6 +65,28 @@
     </div>
   </div>
 </div>
+
+<div class="container">
+  <div class="btn-group dropdown ml-2">
+    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      IT CERTIFICATIONS
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+      <button class="dropdown-item" type="button" *ngFor="let menu of ITMenu" (click)="show(menu)">{{menu}}</button>
+    </div>
+  </div>
+
+  <div class="btn-group dropdown ml-3">
+    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      PROFESSIONAL CERTIFICATIONS
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+      <button class="dropdown-item" type="button" *ngFor="let menu of ProfMenu" (click)="show(menu)">{{menu}}</button>
+    </div>
+  </div>
+</div>  
+<br>
+
 <div class="ll-products-area mb-24">
   <div class="container">
     <div class="grid grid-cols-12 gap-6 xxl:gap-8" *ngIf="isLoaded">
@@ -122,6 +144,9 @@
           width: 'calc(33% - 10px)'
         }"
       ></ngx-skeleton-loader>
+    </div>
+    <div *ngIf="bookData.length == 0" class="ml-2">
+      <h3>No Records Found</h3>
     </div>
   </div>
 </div>
