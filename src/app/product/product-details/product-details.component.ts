@@ -4,9 +4,9 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router,ActivatedRoute } from '@angular/router';
-import { BookserviceService } from 'src/app/services/Books/books.service';
 import { ImageDetails } from 'src/app/shared/data/ImageDetails';
 import { BookDetails } from 'src/app/shared/data/BookDetails';
+import { BookserviceService } from 'src/app/services/books.service';
 
 @Component({
   selector: 'll-product-details',
