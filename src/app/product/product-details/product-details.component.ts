@@ -7,6 +7,8 @@ import { Router,ActivatedRoute } from '@angular/router';
 import { ImageDetails } from 'src/app/shared/data/ImageDetails';
 import { BookDetails } from 'src/app/shared/data/BookDetails';
 import { BookserviceService } from 'src/app/services/books.service';
+import { addWishlist } from 'src/app/shared/data/addWishlist';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'll-product-details',
@@ -21,9 +23,11 @@ export class ProductDetailsComponent implements OnInit {
   discount:number;
   perDiscount:number;
   showDiscountValue: boolean = false;
+  myDate = new Date();
+  errorMessage: any;
  // images: GalleryItem[];
   constructor(private _http:HttpClient,private activateRoute:ActivatedRoute,
-    private bookService:BookserviceService,private route:Router) { }
+    private bookService:BookserviceService,private route:Router,private datePipe:DatePipe) { }
 
   ngOnInit() {
     
@@ -60,6 +64,31 @@ export class ProductDetailsComponent implements OnInit {
       this.perDiscount=Math.round((this.discount/this.bookDetails.listPrice)*100);
     
   })
+}
+addToWishlist(bookId){
+  
+  const id = this.activateRoute.snapshot.paramMap.get('id');
+  const wishlisItem:addWishlist={
+    bookId:Number(id),
+    userId:1,
+    isLiked:true,
+    createdOn:this.datePipe.transform(this.myDate, 'yyyy-MM-dd'),
+    createdBy:1
+  }
+  
+  debugger;
+    const apiUrl:string=`Orders/AddBookToWishlist`;
+
+    this.bookService.addBooktowishlist(apiUrl,wishlisItem).subscribe({
+      next:(owner:addWishlist)=>{
+        const Status="Succesfully added to wishlist.";
+
+      },
+      error:()=>{
+        
+        this.errorMessage="Error Occured"//this.errorHandler.errorMessage;
+      }
+    });
 
 }
 }
