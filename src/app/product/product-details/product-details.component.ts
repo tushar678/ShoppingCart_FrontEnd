@@ -27,6 +27,7 @@ export class ProductDetailsComponent implements OnInit {
   myDate = new Date();
   errorMessage: any;
   wishListAdded: boolean;
+  quantity:number;
  // images: GalleryItem[];
  ItemId:any;
  result:any;
@@ -106,7 +107,7 @@ AddToCart(){
   const Item = {
     BookId:this.ItemId,
     UserId: 1,
-    Quantity:1,
+    Quantity:this.quantity,
     CartTotal:this.bookDetails.ourPrice,
     DiscountPer:0,
     NetPay:this.bookDetails.ourPrice,
@@ -125,5 +126,9 @@ AddToCart(){
   }
 )
   
+}
+UpdateQty(Qty:any){
+
+this.quantity=Qty.value;
 }
 }
