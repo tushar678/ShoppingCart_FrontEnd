@@ -19,7 +19,7 @@
         </div>
         <div class="flex items-center p-4 border-b hover:bg-blue-100" *ngFor="let product of wishListItem | slice: 0:9">
           <div class="w-6/12">
-            <a href="" class="flex hover:text-primary">
+            <a [routerLink]="['/products', product.bookId]" class="flex hover:text-primary">
               <div class="max-h-16 w-16 flex-none mr-3 border" *ngIf="product?.images">
                 <img [src]="product?.images[0]" alt="img">
               </div>
