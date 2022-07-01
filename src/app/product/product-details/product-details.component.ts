@@ -107,7 +107,7 @@ AddToCart(){
   const Item = {
     BookId:this.ItemId,
     UserId: 1,
-    Quantity:this.quantity,
+    Quantity:this.quantity!=null?this.quantity:1,
     CartTotal:this.bookDetails.ourPrice,
     DiscountPer:0,
     NetPay:this.bookDetails.ourPrice,
@@ -128,7 +128,13 @@ AddToCart(){
   
 }
 UpdateQty(Qty:any){
-
+  if(Qty.value=="0"){
+    alert('Quantity should be greater then 0.')
+    Qty.value=1;
+    this.quantity=1;
+      }
+      else{
 this.quantity=Qty.value;
+      }
 }
 }

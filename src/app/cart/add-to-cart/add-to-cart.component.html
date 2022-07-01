@@ -50,7 +50,7 @@
       </td>
       <td>  </td>
       <td><h3> ${{item.ourPrice| number : '1.2-2'}}</h3></td>
-      <td> <input type="text" value="{{item.quantity}}" style="height: 35px; width:60px;" #qty (input)="UpdateCart(item,qty)"></td>
+      <td> <input type="number" value="{{item.quantity}}" style="height: 35px; width:60px;" #qty (input)="UpdateCart(item,qty)"></td>
       <td><h3> ${{item.cartTotal| number : '1.2-2'}}</h3></td>
       <td><button type="button" (click)="RemoveToCart(item.bookId)" class="btn btn-danger">Remove</button></td>
     </tr>
