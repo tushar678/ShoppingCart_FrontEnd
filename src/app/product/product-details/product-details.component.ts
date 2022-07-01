@@ -7,6 +7,7 @@ import { Router,ActivatedRoute } from '@angular/router';
 import { ImageDetails } from 'src/app/shared/data/ImageDetails';
 import { BookDetails } from 'src/app/shared/data/BookDetails';
 import { BookserviceService } from 'src/app/services/books.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'll-product-details',
@@ -22,11 +23,13 @@ export class ProductDetailsComponent implements OnInit {
   perDiscount:number;
   showDiscountValue: boolean = false;
  // images: GalleryItem[];
+ ItemId:any;
+ result:any;
   constructor(private _http:HttpClient,private activateRoute:ActivatedRoute,
-    private bookService:BookserviceService,private route:Router) { }
+    private bookService:BookserviceService,private route:Router,private userService:UserService) { }
 
   ngOnInit() {
-    
+    this.ItemId = this.activateRoute.snapshot.paramMap.get('id');
    //this.getBookImageById();
     this.bookDetailById();
     
@@ -61,5 +64,30 @@ export class ProductDetailsComponent implements OnInit {
     
   })
 
+}
+AddToCart(){
+  var id=this.ItemId;
+  const Item = {
+    BookId:this.ItemId,
+    UserId: 1,
+    Quantity:1,
+    CartTotal:this.bookDetails.ourPrice,
+    DiscountPer:0,
+    NetPay:this.bookDetails.ourPrice,
+
+  };
+  //this.route.navigate(['/cart'],this.ItemId);
+ this.userService.AddToCart(Item).subscribe(
+     
+  data => {
+    debugger
+    this.result=data;
+    this.route.navigate(['/cart']);
+   // this.route.navigate(['/cart'],{state : {data : {id}}})
+  },
+  error => {
+  }
+)
+  
 }
 }

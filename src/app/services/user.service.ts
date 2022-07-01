@@ -19,10 +19,22 @@ export class UserService {
   // }
   AddToCart(object:any) {
     debugger
-    return this.httpClient.post(this.baseAPIurl + "Books/AddToCart" ,object);
+    return this.httpClient.post(this.baseAPIurl + "Cart/AddToCart" ,object);
   }
   GetItemToCart(object:any) {
     debugger
-    return this.httpClient.get(this.baseAPIurl + "Books/GetItemToCart?id="+object);
+    return this.httpClient.get(this.baseAPIurl + "Cart/GetItemToCart?id="+object);
+  }
+  RemoveToCart(object:any) {
+    debugger
+    return this.httpClient.post(this.baseAPIurl + "Cart/RemoveToCart" ,object);
+  }
+  EmptyToCart(object:any) {
+    debugger
+    return this.httpClient.post(this.baseAPIurl + "Cart/EmptyCart" ,object);
+  }
+  UpdateCart(object:any) {
+    debugger
+    return this.httpClient.post(this.baseAPIurl + "Cart/UpdateCart" ,object);
   }
 }
