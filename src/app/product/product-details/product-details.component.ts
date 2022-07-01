@@ -8,6 +8,8 @@ import { ImageDetails } from 'src/app/shared/data/ImageDetails';
 import { BookDetails } from 'src/app/shared/data/BookDetails';
 import { BookserviceService } from 'src/app/services/books.service';
 import { UserService } from 'src/app/services/user.service';
+import { DatePipe } from '@angular/common';
+import { addWishlist } from 'src/app/shared/data/addWishlist';
 
 @Component({
   selector: 'll-product-details',
@@ -17,20 +19,26 @@ import { UserService } from 'src/app/services/user.service';
   
 })
 export class ProductDetailsComponent implements OnInit {
-  imageDetails:ImageDetails[] = [];
+  imageDetails:ImageDetails ;
   bookDetails:BookDetails;
   discount:number;
   perDiscount:number;
   showDiscountValue: boolean = false;
+  myDate = new Date();
+  errorMessage: any;
+  wishListAdded: boolean;
  // images: GalleryItem[];
  ItemId:any;
  result:any;
   constructor(private _http:HttpClient,private activateRoute:ActivatedRoute,
-    private bookService:BookserviceService,private route:Router,private userService:UserService) { }
+    private bookService:BookserviceService,private route:Router,private userService:UserService,private datePipe:DatePipe) { }
 
   ngOnInit() {
     this.ItemId = this.activateRoute.snapshot.paramMap.get('id');
    //this.getBookImageById();
+   
+    
+   this.getBookImageById();
     this.bookDetailById();
     
     
@@ -59,10 +67,38 @@ export class ProductDetailsComponent implements OnInit {
       if(this.bookDetails.listPrice != this.bookDetails.ourPrice){
         this.showDiscountValue = true;
       }
+      if(this.bookDetails.wishlistAdded==true){
+        this.wishListAdded=true;
+      }
       this.discount=this.bookDetails.listPrice-this.bookDetails.ourPrice
       this.perDiscount=Math.round((this.discount/this.bookDetails.listPrice)*100);
     
   })
+}
+addToWishlist(bookId){
+  
+  const id = this.activateRoute.snapshot.paramMap.get('id');
+  const wishlisItem:addWishlist={
+    bookId:Number(id),
+    userId:1,
+    isLiked:true,
+    createdOn:this.datePipe.transform(this.myDate, 'yyyy-MM-dd'),
+    createdBy:1
+  }
+  
+  debugger;
+    const apiUrl:string=`Orders/AddBookToWishlist`;
+
+    this.bookService.addBooktowishlist(apiUrl,wishlisItem).subscribe({
+      next:(owner:addWishlist)=>{
+        const Status="Succesfully added to wishlist.";
+
+      },
+      error:()=>{
+        
+        this.errorMessage="Error Occured"//this.errorHandler.errorMessage;
+      }
+    });
 
 }
 AddToCart(){

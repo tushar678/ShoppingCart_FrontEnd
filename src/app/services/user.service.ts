@@ -37,4 +37,8 @@ export class UserService {
     debugger
     return this.httpClient.post(this.baseAPIurl + "Cart/UpdateCart" ,object);
   }
+
+  getUserById(id: any){
+    return this.httpClient.get(this.baseAPIurl + 'Users/GetUserById?id=' + id);
+  }
 }
