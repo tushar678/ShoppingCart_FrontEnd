@@ -18,20 +18,21 @@ import { DatePipe } from '@angular/common';
   
 })
 export class ProductDetailsComponent implements OnInit {
-  imageDetails:ImageDetails[] = [];
+  imageDetails:ImageDetails ;
   bookDetails:BookDetails;
   discount:number;
   perDiscount:number;
   showDiscountValue: boolean = false;
   myDate = new Date();
   errorMessage: any;
+  wishListAdded: boolean;
  // images: GalleryItem[];
   constructor(private _http:HttpClient,private activateRoute:ActivatedRoute,
     private bookService:BookserviceService,private route:Router,private datePipe:DatePipe) { }
 
   ngOnInit() {
     
-   //this.getBookImageById();
+   this.getBookImageById();
     this.bookDetailById();
     
     
@@ -59,6 +60,9 @@ export class ProductDetailsComponent implements OnInit {
       console.log(this.bookDetails);  
       if(this.bookDetails.listPrice != this.bookDetails.ourPrice){
         this.showDiscountValue = true;
+      }
+      if(this.bookDetails.wishlistAdded==true){
+        this.wishListAdded=true;
       }
       this.discount=this.bookDetails.listPrice-this.bookDetails.ourPrice
       this.perDiscount=Math.round((this.discount/this.bookDetails.listPrice)*100);
