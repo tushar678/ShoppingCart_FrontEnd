@@ -11,7 +11,7 @@ import { WishListItem } from 'src/app/shared/data/WishListItem';
 })
 export class DashboardSavedItemComponent implements OnInit {
   view = 'list';
-wishListItem:WishListItem[];
+  wishListItem:WishListItem[];
   products;
   constructor(private ordersService:OrdersService,private activateRoute:ActivatedRoute) {}
 
