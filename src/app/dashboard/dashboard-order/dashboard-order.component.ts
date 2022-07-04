@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { OrdersService } from 'src/app/services/orders.service';
+import { orderdetail } from 'src/app/shared/data/orderdetail';
 
 @Component({
   selector: 'app-dashboard-order',
@@ -6,84 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard-order.component.scss']
 })
 export class DashboardOrderComponent implements OnInit {
-  orders = [];
+  public orderDetails: any;
+  // orderDetail: orderdetail[] = [];
 
-  constructor() {}
+  constructor(private orderService: OrdersService) {}
 
   ngOnInit(): void {
-    this.orders = [
-      {
-        id: 'e5dcdfsf',
-        orderBy: 'Dean Lynch',
-        productId: 'cdfsfe5d',
-        created: '25.05.2021, 10:00',
-        status: 'complated',
-        price: 2145.0
-      },
-      {
-        id: 'e5dcdfsf',
-        orderBy: 'Lynch Dean',
-        productId: 'cdfsfe5d',
-        created: '25.05.2021, 10:00',
-        status: 'pending',
-        price: 2145.0
-      },
-      {
-        id: 'e5dcdfsf',
-        orderBy: 'Lynch Dean',
-        productId: 'cdfsfe5d',
-        created: '25.05.2021, 10:00',
-        status: 'rejected',
-        price: 2145.0
-      },
-      {
-        id: 'e5dcdfsf',
-        orderBy: 'Dean Lynch',
-        productId: 'cdfsfe5d',
-        created: '25.05.2021, 10:00',
-        status: 'initialized',
-        price: 2145.0
-      },
-      {
-        id: 'e5dcdfsf',
-        orderBy: 'Dean Lynch',
-        productId: 'cdfsfe5d',
-        created: '25.05.2021, 10:00',
-        status: 'complated',
-        price: 2145.0
-      },
-      {
-        id: 'e5dcdfsf',
-        orderBy: 'Lynch Dean',
-        productId: 'cdfsfe5d',
-        created: '25.05.2021, 10:00',
-        status: 'pending',
-        price: 2145.0
-      },
-      {
-        id: 'e5dcdfsf',
-        orderBy: 'Lynch Dean',
-        productId: 'cdfsfe5d',
-        created: '25.05.2021, 10:00',
-        status: 'rejected',
-        price: 2145.0
-      },
-      {
-        id: 'e5dcdfsf',
-        orderBy: 'Dean Lynch',
-        productId: 'cdfsfe5d',
-        created: '25.05.2021, 10:00',
-        status: 'initialized',
-        price: 2145.0
-      },
-      {
-        id: 'e5dcdfsf',
-        orderBy: 'Dean Lynch',
-        productId: 'cdfsfe5d',
-        created: '25.05.2021, 10:00',
-        status: 'complated',
-        price: 2145.0
-      }
-    ];
+    this.getOrdersStatus();
+  }
+
+  getOrdersStatus(): void {
+    this.orderService.getOrdersStatus().subscribe((data: any) => {
+      this.orderDetails = data;
+      console.log(this.orderDetails);
+    });
   }
 }

@@ -1,69 +1,61 @@
-<!-- <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">OrderId</th>
-      <th scope="col">CheckOutId</th>
-      <th scope="col">BookId</th>
-      <th scope="col">CreatedBy</th>
-      <th scope="col">ModifiedBy</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let order of orderDetails">
-      <td>{{ order.orderId }}</td>
-      <td>{{ order.checkoutId }}</td>
-      <td>{{ order.bookId }}</td>
-      <td>{{ order.createdBy }}</td>
-      <td>{{ order.modifiedBy }}</td>
-    </tr>
-  </tbody>
-</table> -->
 <div>
-  <h5 class="mb-3 font-medium">My Orders</h5>
+  <h5 class="mb-3 font-medium" align="center">My Corporate Sales</h5>
   <div class="table-inside">
     <table class="order-table table-auto ltMd:responsive">
       <thead>
         <tr class="border text-left">
           <th>
-            <span class="text-gray-800">Order Id</span>
+            <span class="text-gray-800">Name</span>
           </th>
           <th>
-            <span class="text-gray-800">Product</span>
+            <span class="text-gray-800">Phone</span>
           </th>
           <th>
-            <span class="text-gray-800">Product Type</span>
+            <span class="text-gray-800">Email</span>
           </th>
 
           <th>
-            <span class="text-gray-800">Quantity</span>
+            <span class="text-gray-800">Company Name</span>
           </th>
 
           <th>
-            <span class="text-gray-800">Price</span>
+            <span class="text-gray-800">Purpose</span>
           </th>
-          <th class="text-right">Action</th>
+          <th>
+            <span class="text-gray-800">State</span>
+          </th>
+          <th>
+            <span class="text-gray-800">Country</span>
+          </th>
+          <!-- <th class="text-right">State</th> -->
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let order of orderDetails" class="border">
+        <tr *ngFor="let sales of corpsales" class="border">
           <td>
-            <a class="text-primary" href="/">{{ order.orderId }}</a>
+            <a class="text-primary" href="/">{{ sales.firstName }}</a>
           </td>
           <td>
-            {{ order.title }}
+            {{ sales.phone }}
           </td>
           <td>
-            <span>{{ order.productType }}</span>
+            <span>{{ sales.email }}</span>
           </td>
           <td>
             <!-- <span>{{ order.imageName }}</span> -->
-            <span>1</span>
+            <span>{{ sales.companyName }}</span>
           </td>
           <td>
             <!-- <span><img src="{{ order.imageUrl }}" /></span> -->
-            <span>{{ order.ourPrice }}</span>
+            <span>{{ sales.purpose }}</span>
           </td>
           <td>
+            <span>{{ sales.state }}</span>
+          </td>
+          <td>
+            <span>{{ sales.country }}</span>
+          </td>
+          <!-- <td>
             <div
               [ngClass]="{
                 'bg-blue-500 text-blue-500': order?.status === 'complated',
@@ -90,7 +82,7 @@
                 <span>Delete</span>
               </button>
             </mat-menu>
-          </td>
+          </td> -->
         </tr>
       </tbody>
     </table>
