@@ -21,5 +21,5 @@ export class MenuService {
 
   getBooksBySubMenu(name: string){
     return this.http.get(this.baseUrl + 'Menus/GetBooksBySubMenu?menu=' + name);
-    }
+  }
 }

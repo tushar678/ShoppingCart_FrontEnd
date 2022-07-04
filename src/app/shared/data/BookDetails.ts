@@ -17,4 +17,5 @@ export interface BookDetails{
   contentType:string;
   certification:string;
   publisher:string;
+  wishlistAdded:boolean;
 }

@@ -7,8 +7,9 @@ import { Router,ActivatedRoute } from '@angular/router';
 import { ImageDetails } from 'src/app/shared/data/ImageDetails';
 import { BookDetails } from 'src/app/shared/data/BookDetails';
 import { BookserviceService } from 'src/app/services/books.service';
-import { addWishlist } from 'src/app/shared/data/addWishlist';
+import { UserService } from 'src/app/services/user.service';
 import { DatePipe } from '@angular/common';
+import { addWishlist } from 'src/app/shared/data/addWishlist';
 
 @Component({
   selector: 'll-product-details',
@@ -18,20 +19,27 @@ import { DatePipe } from '@angular/common';
   
 })
 export class ProductDetailsComponent implements OnInit {
-  imageDetails:ImageDetails[] = [];
+  imageDetails:ImageDetails ;
   bookDetails:BookDetails;
   discount:number;
   perDiscount:number;
   showDiscountValue: boolean = false;
   myDate = new Date();
   errorMessage: any;
+  wishListAdded: boolean;
+  quantity:number;
  // images: GalleryItem[];
+ ItemId:any;
+ result:any;
   constructor(private _http:HttpClient,private activateRoute:ActivatedRoute,
-    private bookService:BookserviceService,private route:Router,private datePipe:DatePipe) { }
+    private bookService:BookserviceService,private route:Router,private userService:UserService,private datePipe:DatePipe) { }
 
   ngOnInit() {
-    
+    this.ItemId = this.activateRoute.snapshot.paramMap.get('id');
    //this.getBookImageById();
+   
+    
+   this.getBookImageById();
     this.bookDetailById();
     
     
@@ -59,6 +67,9 @@ export class ProductDetailsComponent implements OnInit {
       console.log(this.bookDetails);  
       if(this.bookDetails.listPrice != this.bookDetails.ourPrice){
         this.showDiscountValue = true;
+      }
+      if(this.bookDetails.wishlistAdded==true){
+        this.wishListAdded=true;
       }
       this.discount=this.bookDetails.listPrice-this.bookDetails.ourPrice
       this.perDiscount=Math.round((this.discount/this.bookDetails.listPrice)*100);
@@ -90,5 +101,34 @@ addToWishlist(bookId){
       }
     });
 
+}
+AddToCart(){
+  var id=this.ItemId;
+  const Item = {
+    BookId:this.ItemId,
+    UserId: 1,
+    Quantity:this.quantity,
+    CartTotal:this.bookDetails.ourPrice,
+    DiscountPer:0,
+    NetPay:this.bookDetails.ourPrice,
+
+  };
+  //this.route.navigate(['/cart'],this.ItemId);
+ this.userService.AddToCart(Item).subscribe(
+     
+  data => {
+    debugger
+    this.result=data;
+    this.route.navigate(['/cart']);
+   // this.route.navigate(['/cart'],{state : {data : {id}}})
+  },
+  error => {
+  }
+)
+  
+}
+UpdateQty(Qty:any){
+
+this.quantity=Qty.value;
 }
 }
