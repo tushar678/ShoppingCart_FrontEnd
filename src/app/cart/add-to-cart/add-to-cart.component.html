@@ -58,16 +58,16 @@
   </tbody>
 </table>
 <div>
-  <div class="row" >
+  <div class="row" *ngIf="this.productList.length>0" >
     <div class="col-sm-7"></div>
     <div class="col-sm-2">
-     <button type="button" (click)="EmptyToCart()" class="btn btn-secondary">Empty Cart</button>
+     <button type="button" (click)="EmptyToCart()" class="btn-emptycart">Empty Cart</button>
     </div>
     <div class="col-sm-3"><h3>Total Price:   ${{TotalPrice| number : '1.2-2'}}</h3> 
     </div>
    
     </div>
-    <div class="row" >
+    <div class="row" *ngIf="this.productList.length>0">
       <div class="col-sm-7"></div>
       <div class="col-sm-2">
       
@@ -76,7 +76,9 @@
       </div>
      
      
-      
+      <div *ngIf="productList.length == 0" class="ml-2">
+        <h3>No Records Found</h3>
+      </div>
 
 </div>
 </div>
