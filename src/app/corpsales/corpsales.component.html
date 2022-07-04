@@ -1,0 +1,90 @@
+<div>
+  <h5 class="mb-3 font-medium" align="center">My Corporate Sales</h5>
+  <div class="table-inside">
+    <table class="order-table table-auto ltMd:responsive">
+      <thead>
+        <tr class="border text-left">
+          <th>
+            <span class="text-gray-800">Name</span>
+          </th>
+          <th>
+            <span class="text-gray-800">Phone</span>
+          </th>
+          <th>
+            <span class="text-gray-800">Email</span>
+          </th>
+
+          <th>
+            <span class="text-gray-800">Company Name</span>
+          </th>
+
+          <th>
+            <span class="text-gray-800">Purpose</span>
+          </th>
+          <th>
+            <span class="text-gray-800">State</span>
+          </th>
+          <th>
+            <span class="text-gray-800">Country</span>
+          </th>
+          <!-- <th class="text-right">State</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sales of corpsales" class="border">
+          <td>
+            <a class="text-primary" href="/">{{ sales.firstName }}</a>
+          </td>
+          <td>
+            {{ sales.phone }}
+          </td>
+          <td>
+            <span>{{ sales.email }}</span>
+          </td>
+          <td>
+            <!-- <span>{{ order.imageName }}</span> -->
+            <span>{{ sales.companyName }}</span>
+          </td>
+          <td>
+            <!-- <span><img src="{{ order.imageUrl }}" /></span> -->
+            <span>{{ sales.purpose }}</span>
+          </td>
+          <td>
+            <span>{{ sales.state }}</span>
+          </td>
+          <td>
+            <span>{{ sales.country }}</span>
+          </td>
+          <!-- <td>
+            <div
+              [ngClass]="{
+                'bg-blue-500 text-blue-500': order?.status === 'complated',
+                'bg-red-500 text-red-500': order?.status === 'rejected',
+                'bg-yellow-500 text-yellow-900': order?.status === 'pending',
+                'bg-primary text-primary': order?.status === 'initialized'
+              }"
+              class="text-[12px] bg-opacity-20 rounded-full px-3 inline-block font-bold py-[3px]"
+            >
+              {{ order?.status | titlecase }}
+            </div>
+          </td>
+          <td class="text-right">
+            <button class="action_icon__btn" mat-icon-button [matMenuTriggerFor]="menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xposition="before">
+              <button mat-menu-item>
+                <mat-icon>dialpad</mat-icon>
+                <span>Details</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon>delete</mat-icon>
+                <span>Delete</span>
+              </button>
+            </mat-menu>
+          </td> -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
