@@ -1,0 +1,82 @@
+<p>add-to-cart works!</p>
+<div class="container">
+  <!-- <div  *ngFor="let item of productList">
+  <div class="row" >
+    <div class="col-sm-8">
+  <div class="card-deck">
+   
+      <div class="card mb-4 mt-20">
+          <img class="card-img-top img-fluid" src="{{item.image}}" alt="Card image cap">
+          <div class="card-body">
+              <h4 class="card-title">{{item.cartId}}</h4>
+              <h4 class="card-title">{{item.bookId}}</h4>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-sm-1"></div>
+<div class="col-sm-1"></div>
+<div class="col-sm-1"></div>
+<div class="col-sm-1"></div>
+</div> -->
+<table class="table mt-20">
+  <thead>
+    <tr class="table-header" style="width:50px;">
+      <th scope="col" >Product</th>
+      <th scope="col"></th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col"> Item Total   </th>
+      <th scope="col">    </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of productList">
+      <td >
+        <div class="card mb-4">
+          <a (click)="imgclick(item.bookId)">
+          <img class="card-img-top img-fluid" src="{{item.image}}" alt="Card image cap" style="height:200px;width: 200px;" >
+      </a>
+          <div class="card-body">
+              <h4 class="card-title">{{item.title}}</h4>
+              <p class="card-text">{{item.details}}</p>
+              <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+          </div>
+      </div>
+      </td>
+      <td>  </td>
+      <td><h3> ${{item.ourPrice| number : '1.2-2'}}</h3></td>
+      <td> <input type="text" value="{{item.quantity}}" style="height: 35px; width:60px;" #qty (input)="UpdateCart(item,qty)"></td>
+      <td><h3> ${{item.cartTotal| number : '1.2-2'}}</h3></td>
+      <td><button type="button" (click)="RemoveToCart(item.bookId)" class="btn btn-danger">Remove</button></td>
+    </tr>
+   
+  </tbody>
+</table>
+<div>
+  <div class="row" >
+    <div class="col-sm-7"></div>
+    <div class="col-sm-2">
+     <button type="button" (click)="EmptyToCart()" class="btn btn-secondary">Empty Cart</button>
+    </div>
+    <div class="col-sm-3"><h3>Total Price:   ${{TotalPrice| number : '1.2-2'}}</h3> 
+    </div>
+   
+    </div>
+    <div class="row" >
+      <div class="col-sm-7"></div>
+      <div class="col-sm-2">
+      
+      </div>
+      <button type="button"  class="btn-checkout">checkout</button>
+      </div>
+     
+     
+      
+
+</div>
+</div>

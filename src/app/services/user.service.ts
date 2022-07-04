@@ -7,11 +7,38 @@ import { environment } from 'src/environments/environment';
 })
 export class UserService {
 
-  constructor(private http: HttpClient) { }
+  baseAPIurl: string;
+  constructor(private httpClient:HttpClient) { 
+    this.baseAPIurl=environment.baseUrl
+  }
 
-  baseUrl = environment.baseUrl;
+  // GetBookdetail(data:any): Observable<Bookdetail[]> {
+  //   debugger
+  //   return this.httpClient.get<Bookdetail[]>(this.baseAPIurl + 'api/Books/GetBookById?id='+data);
+  //   debugger
+  // }
+  AddToCart(object:any) {
+    debugger
+    return this.httpClient.post(this.baseAPIurl + "Cart/AddToCart" ,object);
+  }
+  GetItemToCart(object:any) {
+    debugger
+    return this.httpClient.get(this.baseAPIurl + "Cart/GetItemToCart?id="+object);
+  }
+  RemoveToCart(object:any) {
+    debugger
+    return this.httpClient.post(this.baseAPIurl + "Cart/RemoveToCart" ,object);
+  }
+  EmptyToCart(object:any) {
+    debugger
+    return this.httpClient.post(this.baseAPIurl + "Cart/EmptyCart" ,object);
+  }
+  UpdateCart(object:any) {
+    debugger
+    return this.httpClient.post(this.baseAPIurl + "Cart/UpdateCart" ,object);
+  }
 
   getUserById(id: any){
-    return this.http.get(this.baseUrl + 'Users/GetUserById?id=' + id);
+    return this.httpClient.get(this.baseAPIurl + 'Users/GetUserById?id=' + id);
   }
 }
