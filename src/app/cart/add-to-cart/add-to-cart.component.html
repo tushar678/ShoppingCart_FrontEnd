@@ -1,4 +1,3 @@
-<p>add-to-cart works!</p>
 <div class="container">
   <!-- <div  *ngFor="let item of productList">
   <div class="row" >
@@ -23,9 +22,10 @@
 <div class="col-sm-1"></div>
 <div class="col-sm-1"></div>
 </div> -->
+<br><br>
 <table class="table mt-20">
   <thead>
-    <tr class="table-header" style="width:50px;">
+    <tr class="title mt-2 mb-2" style="width:50px;">
       <th scope="col" >Product</th>
       <th scope="col"></th>
       <th scope="col">Price</th>
@@ -39,11 +39,11 @@
       <td >
         <div class="card mb-4">
           <a (click)="imgclick(item.bookId)">
-          <img class="card-img-top img-fluid" src="{{item.image}}" alt="Card image cap" style="height:200px;width: 200px;" >
+          <img class="card-img-top img-fluid ml-3 mt-3" src="{{item.image}}" alt="Card image cap" style="height:200px;width: 200px;" >
       </a>
           <div class="card-body">
               <h4 class="card-title">{{item.title}}</h4>
-              <p class="card-text">{{item.details}}</p>
+              <!-- <p class="card-text">{{item.details}}</p> -->
               <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
           </div>
       </div>
@@ -59,23 +59,20 @@
 </table>
 <div>
   <div class="row" *ngIf="this.productList.length>0" >
-    <div class="col-sm-7"></div>
-    <div class="col-sm-2">
-     <button type="button" (click)="EmptyToCart()" class="btn-emptycart">Empty Cart</button>
-    </div>
-    <div class="col-sm-3"><h3>Total Price:   ${{TotalPrice| number : '1.2-2'}}</h3> 
-    </div>
+    <div class="col-sm-8"></div>
+    <div class="col-sm-3"><h3>Total Price: ${{TotalPrice| number : '1.2-2'}}</h3> </div>
+    <div class="col-sm-1"></div>
    
     </div>
+
     <div class="row" *ngIf="this.productList.length>0">
-      <div class="col-sm-7"></div>
-      <div class="col-sm-2">
-      
+      <div class="col-sm-8"></div>
+      <div class="col-sm-4">
+      <button type="button" (click)="CheckOut(TotalPrice)" class="btn btn-success btn-lg">Proceed to Checkout</button>
+      <button type="button" (click)="EmptyToCart()" class="btn btn-warning ml-1 btn-lg">Empty Cart</button>
       </div>
-      <button type="button"  (click)="CheckOut(TotalPrice)" class="btn-checkout">checkout</button>
-      </div>
-     
-     
+    </div>
+
       <div *ngIf="productList.length == 0" class="ml-2">
         <h3>No Records Found</h3>
       </div>
