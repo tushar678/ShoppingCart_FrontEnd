@@ -10,6 +10,7 @@ export class OrderReviewComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.getOrderedItems();
   }
-
+  
 }
