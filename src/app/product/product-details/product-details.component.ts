@@ -118,9 +118,9 @@ AddToCart(){
      
   data => {
     debugger
-    this.result=data;
+   
     this.route.navigate(['/cart']);
-   // this.route.navigate(['/cart'],{state : {data : {id}}})
+   
   },
   error => {
   }

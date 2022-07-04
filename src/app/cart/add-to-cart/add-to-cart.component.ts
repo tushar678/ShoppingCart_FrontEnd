@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { UserService } from 'src/app/services/user.service';
 
@@ -12,7 +12,7 @@ export class AddToCartComponent implements OnInit {
 productList=[];
 ItemId:any;
 TotalPrice:number;
-  constructor(private userService:UserService,private route:ActivatedRoute) { }
+  constructor(private userService:UserService,private route:ActivatedRoute,private router:Router) { }
 
   ngOnInit(): void {
     debugger
@@ -136,4 +136,22 @@ Qty.value=1;
   )
   }
 }
+
+CheckOut(totalPrice:any){
+  debugger;
+  //this.route.navigate(['/cart'],this.ItemId);
+ this.userService.checkOut(totalPrice).subscribe(
+     
+  data => {
+    
+    
+    this.router.navigate(['/Review/order-review']);
+   // this.route.navigate(['/cart'],{state : {data : {id}}})
+  },
+  error => {
+  }
+)
+  
+}
+
 }

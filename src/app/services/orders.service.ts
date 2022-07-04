@@ -15,8 +15,6 @@ export class OrdersService {
     return this.http.get<WishListItem[]>(this.baseUrl+route)
   }
 
-  getcartItems(){
-    
-  }
+ 
 
 }
