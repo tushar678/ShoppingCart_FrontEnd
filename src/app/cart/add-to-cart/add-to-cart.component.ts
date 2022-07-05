@@ -140,18 +140,16 @@ Qty.value=1;
 CheckOut(totalPrice:any){
   debugger;
   //this.route.navigate(['/cart'],this.ItemId);
- this.userService.checkOut(totalPrice).subscribe(
-     
-  data => {
-    
-    
-    this.router.navigate(['/Review/order-review']);
-   // this.route.navigate(['/cart'],{state : {data : {id}}})
-  },
-  error => {
-  }
-)
-  
+//  this.userService.checkOut(totalPrice).subscribe(
+//   data => {
+//     console.log('Cart Checkout Data', data);
+//     this.router.navigate(['/Review/order-review']);
+//    // this.route.navigate(['/cart'],{state : {data : {id}}})
+//   },
+//   error => {
+//   }
+// )
+  this.router.navigate(['/Review/order-review']);
 }
 
 }

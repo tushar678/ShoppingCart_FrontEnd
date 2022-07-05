@@ -1,67 +1,54 @@
   <div class="container mt-32">  
  
 <div class="d-flex">  
-  <form action="" method="">  
+  <form action="" method="" [formGroup]="shippingDetails">  
     <div class="title ml-3">  
       <h2> Shipping Details</h2>  
   </div>  
+  <br>
     <label>  
       <span class="fname"> First Name <span class="required"> * </span></span>  
-      <input type="text" name="fname">  
+      <input type="text" name="fname" placeholder="Enter your First Name" formControlName="FirstName"> 
     </label>  
     <label>  
       <span class="lname"> Last Name <span class="required"> * </span> </span>  
-      <input type="text" name="lname">  
+      <input type="text" name="lname" placeholder="Enter your Last Name" formControlName="LastName">  
     </label>  
-    
-    <label>  
-      <span>Country <span class="required">*</span></span>  
-      <select name="selection">  
-        <option value="select"> Select a country... </option>  
-        <option value="IND">India</option>  
-        <option value="IND">Canada</option> 
-        <option value="IND">England</option> 
-        <option value="IND">USA</option> 
-         
-      </select>  
-    </label>  
+     
     <label>  
       <span> Address <span class="required"> * </span></span>  
-      <input type="text" name="houseadd" placeholder="House number and street name" required>  
-    </label>  
-    <label>  
-      <span> </span>  
-      <input type="text" name="apartment" placeholder="Apartment, suite, unit etc. (optional)">  
-    </label>  
+      <input type="text" name="address" placeholder="Enter your address" formControlName="Address">  
+    </label>   
     <label>  
       <span> Town / City <span class="required">*</span></span>  
-      <input type="text" name="city">   
+      <input type="text" name="city" placeholder="Enter your City" formControlName="City">   
     </label>  
     <label>  
-      <span> State / County <span class="required">*</span></span>  
-      <input type="text" name="city">   
+      <span> State <span class="required">*</span></span>  
+      <input type="text" name="state" placeholder="Enter your State" formControlName="State">   
     </label>  
+    <label>  
+      <span> Country <span class="required">*</span></span>  
+      <input type="text" name="country" placeholder="Enter your Country" formControlName="Country">   
+    </label> 
     <label>  
       <span> Postcode / ZIP <span class="required">*</span></span>  
-      <input type="text" name="city">   
+      <input type="text" name="zip" placeholder="Enter your Zip Code" formControlName="ZipCode">   
     </label>  
     <label>  
-      <span> Phone Number <span class="required">*</span></span>  
-      <input type="tel" name="city">   
-    </label>  
-    <label>  
-      <span> Email Address <span class="required">*</span></span>  
-      <input type="email" name="city">   
+      <span> Phone No. <span class="required">*</span></span>  
+      <input type="tel" name="phone" placeholder="Enter your Contact Details" formControlName="Phone">   
     </label>  
     <label>  
       <span>Address Type <span class="required">*</span></span>  
-      <select name="selection">  
+      <select name="addtype" formControlName="AddressType">  
         <option value="select"> Address Type.. </option>  
-        <option value="RES">Residential</option>  
-        <option value="COM">Commercial</option> 
+        <option value="Residential">Residential</option>  
+        <option value="Commercial">Commercial</option> 
       </select> 
     </label> 
   </form>
+  
   <div class="Yorder">   
     <table class="table">  
       <colgroup>
@@ -73,66 +60,42 @@
       <tr>  
         <th >Product
         </th>
-        <th>Qty
+        <th>Rate
         </th>
-        <th>Each
+        <th>Quantity
         </th>
         <th>Total
         </th>
       </tr>  
-      <tr >  
-        <td> SQL Server 70-768: Developing SQL Data Models LiveLessons (Video Training) </td>  
-        <td> $8.00 </td>  
-        <td>1</td>
-        <td>22</td>
+      <tr *ngFor="let product of productList">  
+        <td> {{product.title}} </td>  
+        <td> ${{product.ourPrice | number : '1.2-2'}} </td>  
+        <td> {{product.quantity}} </td>
+        <td> ${{product.cartTotal | number : '1.2-2'}} </td>
       </tr>  
-      <tr >  
-        <td> SQL Server 70-768: Developing SQL Data Models LiveLessons (Video Training) </td>  
-        <td> $8.00 </td>  
-        <td>1</td>
-        <td>224</td>
-      </tr>
-      <tr >  
-        <td> Product Name x 2(Qty) </td>  
-        <td> $8.00 </td>  
-        <td>1</td>
-        <td>224</td>
-      </tr>
-      <tr >  
-        <td> Product Name x 2(Qty) </td>  
-        <td> $448.00 </td>  
-        <td>1</td>
-        <td>22</td>
-      </tr>
-      <tr >  
-        <td> Product Name x 2(Qty) </td>  
-        <td> $8.00 </td>  
-        <td>1</td>
-        <td>22</td>
-      </tr>
       <tr>  
         <td> Subtotal </td>  
         <td></td>
         <td></td>
-        <td> <b>$0.00</b></td>
+        <td> <b>${{TotalPrice | number : '1.2-2'}}</b></td>
       </tr>  
       <tr>  
         <td> Shipping </td>  
         <td>  </td>  
         <td></td>
-        <td> <b>$0.00</b></td>
+        <td> <b>${{taxData.shipping | number : '1.2-2'}}</b></td>
       </tr>
       <tr>  
         <td> Tax </td>  
         <td>  </td>  
         <td></td>
-        <td><b>$330.00</b></td>
+        <td><b>${{taxData.tax | number : '1.2-2'}}</b></td>
       </tr>
       <tr>  
         <td> Total </td>  
         <td>  </td>  
         <td></td>
-        <td><b>$330.00</b></td>
+        <td><b>${{taxData.finalPay | number : '1.2-2'}}</b></td>
       </tr>
     </table><br>  
     <!-- <div>  
@@ -148,7 +111,7 @@
       <input type="radio" name="dbt" value="cd"> Paypal <span>  
       </span>  
     </div>   -->
-    <button type="button"> Make Payment </button>  
+    <button type="button" (click)="makePayment()"> Make Payment </button>  
   </div>  
  </div>  
 </div>  

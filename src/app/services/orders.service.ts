@@ -15,9 +15,15 @@ export class OrdersService {
     return this.http.get<WishListItem[]>(this.baseUrl + route);
   }
 
- 
-
   getOrdersStatus() {
     return this.http.get<orderdetail[]>(this.baseUrl + 'Orders/GetOrderStatus');
+  }
+
+  createCheckout(totalAmount) {
+    return this.http.post(this.baseUrl + 'Orders/Checkout', totalAmount);
+  }
+
+  addShippingDetails(shippingDetails: any){
+    return this.http.post(this.baseUrl + 'Orders/ShippingDetails', shippingDetails);
   }
 }
