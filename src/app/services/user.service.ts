@@ -41,4 +41,7 @@ export class UserService {
   getUserById(id: any){
     return this.httpClient.get(this.baseAPIurl + 'Users/GetUserById?id=' + id);
   }
+  checkOut(totalPrice:any){
+    return this.httpClient.post(this.baseAPIurl + "Orders/Checkout?Checkout=" , totalPrice);
+  }
 }
