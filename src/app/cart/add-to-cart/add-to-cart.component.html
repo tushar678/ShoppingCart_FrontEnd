@@ -49,9 +49,9 @@
       </div>
       </td>
       <td>  </td>
-      <td><h3> ${{item.ourPrice| number : '1.2-2'}}</h3></td>
+      <td><h3> ₹{{item.ourPrice| number : '1.2-2'}}</h3></td>
       <td> <input type="number" value="{{item.quantity}}" style="height: 35px; width:60px;" #qty (input)="UpdateCart(item,qty)"></td>
-      <td><h3> ${{item.cartTotal| number : '1.2-2'}}</h3></td>
+      <td><h3> ₹{{item.cartTotal| number : '1.2-2'}}</h3></td>
       <td><button type="button" (click)="RemoveToCart(item.bookId)" class="btn btn-danger">Remove</button></td>
     </tr>
    
@@ -60,7 +60,7 @@
 <div>
   <div class="row" *ngIf="this.productList.length>0" >
     <div class="col-sm-8"></div>
-    <div class="col-sm-3"><h3>Total Price: ${{TotalPrice| number : '1.2-2'}}</h3> </div>
+    <div class="col-sm-3"><h3>Total Price: ₹{{TotalPrice| number : '1.2-2'}}</h3> </div>
     <div class="col-sm-1"></div>
    
     </div>

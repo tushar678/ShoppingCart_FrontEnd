@@ -15,6 +15,7 @@ export class OrderReviewComponent implements OnInit {
   productList: any = [];
   taxData: any = [];
   checkoutId: any;
+  finalPay: any;
 
   constructor(
     private userService: UserService,
@@ -59,6 +60,7 @@ export class OrderReviewComponent implements OnInit {
     this.orderService.createCheckout(this.TotalPrice).subscribe((data: any)=> {
       this.taxData = data;
       this.checkoutId = this.taxData.checkoutId;
+      this.finalPay = this.taxData.finalPay;
       console.log('Tax Calculated Data', this.taxData);
     })
   }
