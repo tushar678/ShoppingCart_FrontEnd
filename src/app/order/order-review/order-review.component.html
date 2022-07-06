@@ -61,16 +61,16 @@
       </select> 
     </label> 
   </form>
-  
-  <div class="Yorder">   
-    <table class="table">  
+
+  <div class="Yorder">
+    <table class="table">
       <colgroup>
         <col style="width: 180px;">
         <col style="width: 40px;">
         <col style="width: 20px;">
         <col style="width: 70px;">
       </colgroup>
-      <tr>  
+      <tr>
         <th >Product
         </th>
         <th>Rate
@@ -79,52 +79,52 @@
         </th>
         <th>Total
         </th>
-      </tr>  
-      <tr *ngFor="let product of productList">  
-        <td> {{product.title}} </td>  
-        <td> ₹{{product.ourPrice | number : '1.2-2'}} </td>  
+      </tr>
+      <tr *ngFor="let product of productList">
+        <td> {{product.title}} </td>
+        <td> ₹{{product.ourPrice | number : '1.2-2'}} </td>
         <td> {{product.quantity}} </td>
         <td> ₹{{product.cartTotal | number : '1.2-2'}} </td>
-      </tr>  
-      <tr>  
-        <td> Subtotal </td>  
+      </tr>
+      <tr>
+        <td> Subtotal </td>
         <td></td>
         <td></td>
         <td> <b>₹{{TotalPrice | number : '1.2-2'}}</b></td>
-      </tr>  
-      <tr>  
-        <td> Shipping </td>  
-        <td>  </td>  
+      </tr>
+      <tr>
+        <td> Shipping </td>
+        <td>  </td>
         <td></td>
         <td> <b>₹{{taxData.shipping | number : '1.2-2'}}</b></td>
       </tr>
-      <tr>  
-        <td> Tax </td>  
-        <td>  </td>  
+      <tr>
+        <td> Tax </td>
+        <td>  </td>
         <td></td>
         <td><b>₹{{taxData.tax | number : '1.2-2'}}</b></td>
       </tr>
-      <tr>  
-        <td> Total </td>  
-        <td>  </td>  
+      <tr>
+        <td> Total </td>
+        <td>  </td>
         <td></td>
         <td><b>₹{{taxData.finalPay | number : '1.2-2'}}</b></td>
       </tr>
-    </table><br>  
-    <!-- <div>  
-      <input type="radio" name="dbt" value="dbt" checked> Direct Bank Transfer  
-    </div>  
-    <p>  
-        Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.  
-    </p>  
-    <div>  
-      <input type="radio" name="dbt" value="cd"> Cash on Delivery  
-    </div>  
-    <div>  
-      <input type="radio" name="dbt" value="cd"> Paypal <span>  
-      </span>  
+    </table><br>
+    <!-- <div>
+      <input type="radio" name="dbt" value="dbt" checked> Direct Bank Transfer
+    </div>
+    <p>
+        Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.
+    </p>
+    <div>
+      <input type="radio" name="dbt" value="cd"> Cash on Delivery
+    </div>
+    <div>
+      <input type="radio" name="dbt" value="cd"> Paypal <span>
+      </span>
     </div>   -->
-    <button type="button" (click)="makePayment()"> Make Payment </button>  
-  </div>  
- </div>  
-</div>  
+      <button type="button" (click)="makePayment()">Make Payment</button>
+    </div>
+  </div>
+</div>
