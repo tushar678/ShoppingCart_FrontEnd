@@ -48,6 +48,7 @@ export class OrderReviewComponent implements OnInit {
       color: '#3399cc'
     }
   };
+  finalPay: any;
 
   constructor(private userService: UserService, private orderService: OrdersService) {}
 
@@ -89,6 +90,7 @@ export class OrderReviewComponent implements OnInit {
     this.orderService.createCheckout(this.TotalPrice).subscribe((data: any) => {
       this.taxData = data;
       this.checkoutId = this.taxData.checkoutId;
+      this.finalPay = this.taxData.finalPay;
       console.log('Tax Calculated Data', this.taxData);
     });
   }
@@ -96,7 +98,7 @@ export class OrderReviewComponent implements OnInit {
   makePayment() {
     this.paymentId = '';
     this.error = '';
-    this.options.amount = this.TotalPrice * 100;
+    this.options.amount = this.finalPay * 100;
     this.options.prefill.name = '';
     this.options.prefill.email = 'userdemo@gmail.com';
     this.options.prefill.contact = '123456789';
