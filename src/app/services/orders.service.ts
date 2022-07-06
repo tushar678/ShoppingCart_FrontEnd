@@ -18,7 +18,6 @@ export class OrdersService {
   getOrdersStatus() {
     return this.http.get<orderdetail[]>(this.baseUrl + 'Orders/GetOrderStatus');
   }
-
   createCheckout(totalAmount) {
     return this.http.post(this.baseUrl + 'Orders/Checkout', totalAmount);
   }

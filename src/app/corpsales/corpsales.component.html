@@ -1,9 +1,14 @@
 <div>
-  <h5 class="mb-3 font-medium" align="center">My Corporate Sales</h5>
+  <div mt-10>
+    <h5 class="mb-3 font-medium" mt-5 align="center">My Corporate Sales</h5>
+  </div>
   <div class="table-inside">
     <table class="order-table table-auto ltMd:responsive">
       <thead>
         <tr class="border text-left">
+          <th>
+            <span class="text-gray-800">Id</span>
+          </th>
           <th>
             <span class="text-gray-800">Name</span>
           </th>
@@ -33,7 +38,10 @@
       <tbody>
         <tr *ngFor="let sales of corpsales" class="border">
           <td>
-            <a class="text-primary" href="/">{{ sales.firstName }}</a>
+            {{ sales.corpSalesId }}
+          </td>
+          <td>
+            {{ sales.firstName }}
           </td>
           <td>
             {{ sales.phone }}
@@ -55,36 +63,11 @@
           <td>
             <span>{{ sales.country }}</span>
           </td>
-          <!-- <td>
-            <div
-              [ngClass]="{
-                'bg-blue-500 text-blue-500': order?.status === 'complated',
-                'bg-red-500 text-red-500': order?.status === 'rejected',
-                'bg-yellow-500 text-yellow-900': order?.status === 'pending',
-                'bg-primary text-primary': order?.status === 'initialized'
-              }"
-              class="text-[12px] bg-opacity-20 rounded-full px-3 inline-block font-bold py-[3px]"
-            >
-              {{ order?.status | titlecase }}
-            </div>
-          </td>
-          <td class="text-right">
-            <button class="action_icon__btn" mat-icon-button [matMenuTriggerFor]="menu">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu" xposition="before">
-              <button mat-menu-item>
-                <mat-icon>dialpad</mat-icon>
-                <span>Details</span>
-              </button>
-              <button mat-menu-item>
-                <mat-icon>delete</mat-icon>
-                <span>Delete</span>
-              </button>
-            </mat-menu>
-          </td> -->
         </tr>
       </tbody>
     </table>
+    <div>
+      <a [routerLink]="'/corpsales/enquiry'"><button class="btn btn-primary" align="right">New Enquiry</button></a>
+    </div>
   </div>
 </div>

@@ -132,7 +132,7 @@ debugger;
   makePayment() {
     if(this.shippingDetails.invalid){
       this.shippingDetails.markAllAsTouched();
-    } else {
+    } else{
     this.paymentId = '';
     this.error = '';
     this.options.amount = this.finalPay * 100;
@@ -155,7 +155,7 @@ debugger;
     });
     // console.log('Payment Amount', this.taxData.finalPay);
     // console.log('Shipping Details', this.shippingDetails.value);
-    this.addShippingDetails();
+    // this.addShippingDetails();
   }
   }
   @HostListener('window:payment.success', ['$event'])
