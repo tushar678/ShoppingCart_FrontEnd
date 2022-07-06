@@ -53,12 +53,13 @@
       <div class="error" *ngIf="validateControl('Phone') && errorHandling('Phone','maxlength')">Phone length should be 10 digit </div>
     </label>  
     <label>  
-      <span>Address Type </span>  
+      <span>Address Type <span class="required">*</span></span>  
       <select name="addtype" formControlName="AddressType">  
         <option value="select"> Address Type.. </option>  
         <option value="Residential">Residential</option>  
         <option value="Commercial">Commercial</option> 
       </select> 
+      <div class="error" *ngIf="validateControl('AddressType') && errorHandling('AddressType','required')">This field is required </div>
     </label> 
   </form>
 

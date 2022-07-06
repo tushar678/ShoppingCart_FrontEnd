@@ -155,7 +155,7 @@ debugger;
     });
     // console.log('Payment Amount', this.taxData.finalPay);
     // console.log('Shipping Details', this.shippingDetails.value);
-    // this.addShippingDetails();
+    this.addShippingDetails();
   }
   }
   @HostListener('window:payment.success', ['$event'])
