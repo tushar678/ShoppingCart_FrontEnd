@@ -6,16 +6,19 @@ import { CorpSalesRoutingModule } from './corpsales-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { CorpsalesComponent } from 'src/app/corpsales/corpsales.component';
+import { EnquiryComponent } from './enquiry/enquiry.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [CorpsalesComponent],
+  declarations: [CorpsalesComponent, EnquiryComponent],
   imports: [
     CommonModule,
     SharedModule,
     MatExpansionModule,
     NgParticlesModule,
     NgxSkeletonLoaderModule,
-    CorpSalesRoutingModule
+    CorpSalesRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class CorpsalesModule {}

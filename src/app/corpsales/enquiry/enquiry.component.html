@@ -1,0 +1,82 @@
+<div class="container mt-10">
+  <div class="d-flex">
+    <form [formGroup]="corpForm" (submit)="saveCorpSales()">
+      <div class="title ml-4 mr-4">
+        <h2 align="center">Corporate & Industrial Sales Enquiry</h2>
+      </div>
+      <label>
+        <span class="fname"> First Name <span class="required"> * </span></span>
+        <input type="text" formControlName="firstName" class="form-control" name="firstName" id="firstName" />
+      </label>
+      <label>
+        <span class="lname"> Last Name <span class="required"> * </span> </span>
+        <input type="text" formControlName="lastName" class="form-control" name="lastName" id="lastName" />
+      </label>
+      <label>
+        <span> Email Address <span class="required">*</span></span>
+        <input type="email" formControlName="email" class="form-control" name="email" id="email" />
+      </label>
+      <label>
+        <span> Phone Number <span class="required">*</span></span>
+        <input type="tel" formControlName="phone" class="form-control" name="phone" id="phone" />
+      </label>
+      <label>
+        <span> Company/Organisation <span class="required">*</span></span>
+        <input type="email" formControlName="companyName" class="form-control" name="companyName" id="companyName" />
+      </label>
+      <!-- <label>
+        <span> Address <span class="required"> * </span></span>
+        <input type="text" name="houseadd" placeholder="House number and street name" required />
+      </label>
+      <label>
+        <span> </span>
+        <input type="text" name="apartment" placeholder="Apartment, suite, unit etc. (optional)" />
+      </label> -->
+      <label>
+        <span> Purpose <span class="required">*</span></span>
+        <!-- <input type="text" formControlName="purpose" class="form-control" name="purpose" id="purpose" /> -->
+        <select name="purpose" formControlName="purpose" class="form-control" name="purpose" id="purpose">
+          <option value="select">Please Select...</option>
+          <option value="Learning Material">Learning Material (books/ebooks/etc.)</option>
+          <option value="Practice Tests">Practice Tests</option>
+          <option value="Exam Vouchers">Exam Vouchers</option>
+          <option value="Other">Other</option>
+        </select>
+      </label>
+      <label>
+        <span> State<span class="required">*</span></span>
+        <input type="text" formControlName="state" class="form-control" name="state" id="state" />
+      </label>
+      <!-- <label>
+        <span> Postcode / ZIP <span class="required">*</span></span>
+        <input type="text" name="city" />
+      </label> -->
+      <label>
+        <span>Country <span class="required">*</span></span>
+        <input type="text" formControlName="country" class="form-control" name="country" id="country" />
+        <!-- <select name="selection">
+          <option value="select">Select a country...</option>
+          <option value="IND">India</option>
+          <option value="IND">Canada</option>
+          <option value="IND">England</option>
+          <option value="IND">USA</option>
+        </select> -->
+      </label>
+      <!-- <label>
+        <span>Enquiry About <span class="required">*</span></span>
+        <select name="selection">
+          <option value="select">Please Select...</option>
+          <option value="IND">Learning Material (books/ebooks/etc.)</option>
+          <option value="IND">Practice Tests</option>
+          <option value="IND">Exam Vouchers</option>
+          <option value="IND">Other, Please Explain Below</option>
+        </select>
+      </label> -->
+      <label>
+        <span>Details <span class="required">*</span></span>
+        <input type="text" formControlName="details" class="form-control" name="details" id="details" />
+      </label>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>
